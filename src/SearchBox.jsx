@@ -3,14 +3,15 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "./SearchBox.css";
 import { useState } from "react";
-import { API_URl, API_KEY } from "./env";
+const API_URL = import.meta.env.VITE_API_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 export default function SearchBox({ updateInfo }) {
   let [city, setCity] = useState("");
 
   let getWeatherInfo = async () => {
     let data = await fetch(
-      `${API_URl}?q=${city}&appid=${API_KEY}&units=metric`
+      `${API_URL}?q=${city}&appid=${API_KEY}&units=metric`
     );
     let jsonData = await data.json();
     // console.log(jsonData);
